@@ -1,0 +1,787 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="css/a.css" rel="stylesheet" />
+<link href="img/1.ico" rel="shortcut icon" />
+<script  src="js/jquery-3.1.0.min.js"></script>
+<script>
+$(function(){
+	(function(){
+		var ali=$('#menu li');
+		 var arrtext=['海棠花日本料理','昌平龙广场','万达双人票','东软出事了，打老虎是谁','北京初春降雪，美呆了'];
+		 var now=0;
+		 var otext=$('#fform').find('.text');
+         otext.val(arrtext[now]);
+		ali.each(function(index) {
+            $(this).click(function(){
+				ali.attr('class','gradient');
+				$(this).attr('class','active');
+				now=index;
+				otext.val(arrtext[now]);
+				});
+			otext.focus(function(){
+				if($(this).val()==arrtext[now]){
+					$(this).val('');
+					}
+				});
+				otext.blur(function(){
+				if($(this).val()==''){
+					$(this).val(arrtext[now]);
+					}
+				});
+        });
+		})();
+	
+	(function(){
+		var div=$('#update');
+		var oul=div.find('ul');
+		var data=[{'name':'轩轩','time':'5','title':'那些灿烂华美的瞬间','url':'#'},
+		{'name':'莹莹','time':'8','title':'多的是你不知道的事','url':'#'},
+		{'name':'琪琪','time':'8','title':'多的是你不知道的事','url':'#'}];
+		var str='';
+		var upp=$('#upp');
+		var downn=$('#downn');
+		var aa=0;
+		var time=null;
+		for(var i=0; i<data.length;i++){
+			str+='<li> <a href="'+ data[i].url +'"><strong>'+data[i].name+'</strong><span>'+data[i].time+'分钟前</span>写了一篇新文'+data[i].title+'</a></li>';
+			};
+			oul.html(str);
+			var oli=oul.find('li').height();
+			upp.click(function(){
+				domove(1);
+				});
+				downn.click(function(){
+				domove(-1)
+				});
+				
+				
+				function play(){
+				time=setInterval(function(){
+					domove(-1);
+					},2500);
+				}
+				play();
+				div.hover(function(){
+					clearInterval(time);
+					},play);
+				function domove(num){
+					aa+=num;
+					if(aa==1 && num==1){
+							aa=-(data.length-1);
+							}
+					if(Math.abs(aa)>data.length-1){
+						aa=0;
+						}
+						
+			oul.stop().animate({'top':oli*aa},1500);
+			}
+			
+			
+		})();
+		(function(){
+			tab($('.tablenav1'),$('.tancon1') );
+			tab($('.qie'),$('.connn') );
+			function tab(nav,con){
+				var ee=nav.children();
+				con.hide().eq(0).show();
+				ee.each(function(index){
+					$(this).click(function(){
+						ee.removeClass('active').addClass('gradient');
+						$(this).removeClass('gradient').addClass('active');
+						ee.find('span').attr('class','san-down-grey');
+						$(this).find('span').attr('class','san-down');
+						con.hide().eq(index).show()
+						});
+					});
+				}
+			})();
+			(function(){
+				var div=$('#fade');
+				var ulli=div.find(' ul li');
+				var olli=div.find(' ol li');	
+				var a=0;
+				var timer=null;
+				olli.click(function(){
+					a=$(this).index();
+					bb();
+					});
+					
+					function play(){
+						timer=setInterval(function(){
+							a++;
+							a%=olli.length;
+							bb();
+							},2000);
+						}
+						play();
+						
+				function bb(){
+				olli.each(function(index) {
+                   
+						if(index!=a){
+							ulli.eq(index).hide();
+							olli.eq(index).removeClass('active');
+							}else{
+							ulli.hide();
+							ulli.eq(index).show();
+							olli.eq(index).addClass('active');
+								}				
+                });}
+				
+			
+					
+				})();
+	});
+</script>
+</head>
+
+<body>
+<div id="header" class="gradient">
+<p class="city fl">
+请选择城市
+<a href="#" class="active">北京</a>
+<a href="#">上海</a>
+<a href="#">成都</a>
+<a href="#">广州</a>
+<a href="#">深圳</a>
+</p>
+<p class="link fr">
+<a href="#" ><img src="img/jiameng.ico" />加盟100度</a>|
+<a href="#"><img src="img/house.ico" />店铺管理</a>
+</p>
+</div>
+
+
+<div id="nav">
+<ul class="nav1">
+<li><a href="#" ><img src="img/QQ截图20160912150104.png" />美食</a></li>
+<li><a href="#"><img src="img/QQ截图20160912152009.png" />夜店</a></li>
+<li><a href="#"><img src="img/QQ截图20160912150209.png" />购物</a></li>
+<li><a href="#"><img src="img/QQ截图20160912152823.png" />文化</a></li>
+<li><a href="#"><img src="img/QQ截图20160912151453.png" />休闲</a></li>
+</ul>
+<h1><a href="#"><img alt="100度享乐网" src="img/logo.png" /></a></h1>
+<ul class="nav2">
+<li><a href="#" ><img src="img/QQ截图20160912152837.png" />空间</a></li>
+<li><a href="#"><img src="img/QQ截图20160912152853.png"/>知道</a></li>
+<li><a href="#"><img src="img/QQ截图20160912152907.png" />白吃</a></li>
+<li><a href="#"><img src="img/QQ截图20160912152920.png"/>论坛</a></li>
+<li><a href="#"><img src="img/QQ截图20160912152936.png"/>企业</a></li>
+</ul>
+</div>
+
+<div id="search" class="gradient">
+ 
+    <img class="search_info" alt="100度享乐网" src="img/6f3a554cefdac3d787cfd98044ead6bc.png" style="transform:rotate(10deg); left:65px; width:150px; height:150px;" />
+ 
+    <div class="bar">
+    <ul class="menu" id="menu">
+    <li class="active">搜店</li>
+    <li>地址</li>
+    <li>优惠券</li>
+    <li>全文</li>
+    <li>视频</li>
+    </ul>
+    </div>
+<div class="from">
+<form action="#" id="fform" >
+<input type="text"  class="text"  placeholder=""/>
+<input type="submit" class="btn"  value="收索"/><img src="img/QQ截图20160912165001.png" style="width:30px; height:30px; position:absolute; left:320px;" />
+</form>
+</div>
+<p>
+<a href="#">金钱豹</a> <a href="#">大江南</a><a href="#">烤鱼坊</a><a href="#">时尚之都</a><a href="#">德云楼</a><a href="#">时尚之都</a><a href="#">德云楼</a>
+</p>
+    <div class="update" id="update">
+        <div class="wrap">
+        <ul>
+        </ul>
+        </div>
+        <span class="san-up" id="upp"></span>
+        <span class="san-down" id="downn"></span>
+    </div>
+</div>
+
+
+
+    <div class="content clear">
+            <div class="main fl">
+                    <div class="clear">
+                        <div class="section fl">
+                        <h2 class="video_title">WHAT HOT</h2>
+                        <div class="video"><embed src="http://player.youku.com/player.php/sid/XNjkzMDE5MTUy/v.swf" allowFullScreen="true" quality="high" width="310" height="150" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed></div>
+                        <ul class="video_list clear">
+                        <img src="img/936ebbc06de25a554338386f5c9b6403.png" style="background-size:cover; float:left; width:100px; height:100px; margin-top:-10px;"   />
+                        <li><a href="a">kjasjqwnfkFNlw/kefjwe</a></li>
+                        <li><a href="a">kjasjqwnfkFNlw/kefjwe</a></li>
+                        <li><a href="a">kjasjqwnfkFNlw/kefjwe</a></li>
+                        </ul>
+                        </div>
+                    <div class="options fr">
+                        <ul class="nav clear tablenav1 ">
+                        <li class="active fl">
+                        <strong style="color:#d30703;position:relative; left:50px; top:10px;">HOT<a style="color:#000; padding-left:10px;">热店</a></strong>
+                        <span class="san-down" style="position:relative; left:70px;top:20px;"></span>
+                        </li>
+                        <li class="gradient fr">
+                        <strong style="color:#d30703; position:relative; left:50px; top:10px;">NEW<a style="color:#000;padding-left:10px;">新店</a></strong>
+                        <span class="san-down-grey" style="position:relative; left:70px;top:20px;"></span>
+                        </li>
+                        </ul>
+                        <div class="con">
+                        <div class="hot-list">
+                        <ul class="tancon1" >
+                            <li class="clear">
+                            <div class="img fl"><a href="#"><img src="img/QQ截图20160912210137.png" /></a></div>
+                            <div class="text fr">
+                            <h3><a href="#">渝州贺函公园酒店</a></h3>
+                            <p>
+                            区域省：朝阳/CBD<br />
+                            人均：180元<br />
+                            人气：12321<br />
+                            </p>
+                            </div>
+                            </li>
+                             <li class="clear">
+                        <div class="img fl"><a href="#"><img src="img/QQ截图20160912210137.png" /></a></div>
+                        <div class="text fr">
+                        <h3><a href="#">渝州贺函公园酒店</a></h3>
+                        <p>
+                        区域省：朝阳/CBD<br />
+                        人均：180元<br />
+                        人气：12321<br />
+                        </p>
+                        </div>
+                        </li>
+                         <li class="clear">
+                        <div class="img fl"><a href="#"><img src="img/QQ截图20160912210137.png" /></a></div>
+                        <div class="text fr">
+                        <h3><a href="#">渝州贺函公园酒店</a></h3>
+                        <p>
+                        区域省：朝阳/CBD<br />
+                        人均：180元<br />
+                        人气：12321<br />
+                        </p>
+                        </div>
+                        </li>
+                        </ul>
+                        <ul  class="tancon1" >
+                            <li class="clear">
+                            <div class="img fr"><a href="#"><img src="img/QQ截图20160912210137.png" /></a></div>
+                            <div class="text fl">
+                            <h3><a href="#">渝州贺函公园酒店</a></h3>
+                            <p>
+                            区域省：朝阳/CBD<br />
+                            人均：180元<br />
+                            人气：12321<br />
+                            </p>
+                            </div>
+                            </li>
+                             <li class="clear">
+                        <div class="img fr"><a href="#"><img src="img/QQ截图20160912210137.png" /></a></div>
+                        <div class="text fl">
+                        <h3><a href="#">渝州贺函公园酒店</a></h3>
+                        <p>
+                        区域省：朝阳/CBD<br />
+                        人均：180元<br />
+                        人气：12321<br />
+                        </p>
+                        </div>
+                        </li>
+                         <li class="clear">
+                        <div class="img fr"><a href="#"><img src="img/QQ截图20160912210137.png" /></a></div>
+                        <div class="text fl">
+                        <h3><a href="#">渝州贺函公园酒店</a></h3>
+                        <p>
+                        区域省：朝阳/CBD<br />
+                        人均：180元<br />
+                        人气：12321<br />
+                        </p>
+                        </div>
+                        </li>
+                        </ul>
+                        </div>
+                        </div>
+                     </div>
+                    </div>
+            <div class="main-ad"><a href="#" class="addd" style="background-position:-65px -300px;"></a></div>
+                     <div class="clear">
+                    <div class="section fl">
+                    <div class="activity ">
+                        <h2 class="new-title">
+                        <span>LUCKY DAY</span>
+                        <strong>每日活动</strong>
+                        <em>2016-9</em>
+                        </h2>
+                           <div class="conn">
+                        <div class="info clear">
+                        <div class="img fl"><img src="img/QQ截图20160913021602.png" /></div>
+                        <div class="text fr">
+                        <h3>
+                        <em>9</em>
+                        <em>13</em>
+                        <span>本日主题</span>
+                        </h3>
+                        <p>迟到的荣誉，啦啦啦啦啦啦啦啦啦啦啦啦，我是卖报的小行家</p>
+                        </div>
+                        </div>
+                        <div class="canlender">
+                        <h3 class="gradient  ppp" style="margin-left:-10px;">
+                        <span>MON</span>
+                        <span>TUE</span>
+                        <span>WED</span>
+                        <span>THU</span>
+                        <span>FRI</span>
+                        <span>SAT</span>
+                        <span>SUN</span>
+                        </h3>
+                      
+                        <ol class="clear">
+                        <li>29</li>
+                        <li>30</li>
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                        <li>5</li>
+                        <li>6</li>
+                        <li>7</li>
+                        <li>8</li>
+                        <li>9</li>
+                        <li>10</li>
+                        <li>11</li>
+                        <li>12 <img class="active" src="img/QQ截图20160913021602.png" /></li>
+                        <li>13</li>
+                        <li>14</li>
+                        <li>15</li>
+                        <li>16</li>
+                        <li>17</li>
+                        <li>18</li>
+                        <li>19</li>
+                        <li>20<img  src="img/QQ截图20160913182906.png" /></li>
+                        <li>21</li>
+                        <li>22</li>
+                        <li>23</li>
+                        <li>24</li>
+                        <li>25</li>
+                        <li>26</li>
+                        <li>27</li>
+                        <li>28</li>
+                        <li>29</li>
+                        <li>30</li>
+                        </ol>
+                        <p class="san-down-da"  style="margin-left:55px; margin-top:-90px; z-index:999; position:relative;"></p>
+                          <div class="today-info clear">
+                          <img  src="img/QQ截图20160913182906.png" class="fl"/>
+                          <div class="text fr">
+                          <h4>THU本日主题</h4>
+                          <p>迟到的荣誉，啦啦啦啦啦啦啦啦啦啦啦啦啦</p>
+                          </div>
+                          </div>
+                        </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="section fr">
+                     <div class="recommend">
+                        <h2 class="new-title" style="background:none;" >
+                        <img src="img/QQ截图20160913011621.png"  style="height:60px; width:150px;"/>
+                        <span>RECOMMEND</span>
+                        <strong>精彩推荐</strong>
+                        </h2>
+                        <div class="pic clear" id="fade">
+                        <ul class="fl">
+                       <li> <a href=""><img src="img/QQ截图20160913191105.png" /></a></li>
+                       <li> <a href=""><img src="img/QQ截图20160913191122.png" /></a></li>
+                       <li> <a href=""><img src="img/QQ截图20160913191133.png" /></a></li>
+                       </ul>
+                       <ol class="fr" id="ppp">
+                       <li class="active"><img  src="img/QQ截图20160913191105.png" /></li>
+                       <li> <img src="img/QQ截图20160913191122.png" /></li>
+                       <li> <img src="img/QQ截图20160913191133.png" /></li>
+                       </ol>
+                        </div>
+                      <ul class="list-section" >
+    <li class="title " style="margin-left:0px; position:relative;" >
+        <span class="col1 " style="margin-left:0px;"><a href="#">类型</a></span>
+        <span class="col2" style="margin-left:80px;"><a href="#">标题</a></span>
+        <span class="col3 " style="margin-left:230px;"><a href="#">状态</a></span>
+        </li>
+        <li  style="margin-left:0px; position:relative;">
+        <span class="col2 " style="margin-left:-20px;"><a href="#">购物</a></span>
+        <span class="col1 " style="margin-left:70px;"><a href="#">推荐几款性价比好的冰箱</a></span>
+        <span class="col3 " style="margin-left:50px;"><a href="#"><img src="img/QQ截图20160912235635.png" /></a></span>
+        </li>
+    <li  style="margin-left:0px; position:relative;" >
+        <span class="col2 " style="margin-left:-20px;"><a href="#">购物</a></span>
+        <span class="col1 " style="margin-left:70px;"><a href="#">推荐几款性价比好的冰箱</a></span>
+        <span class="col3 " style="margin-left:50px;"><a href="#"><img src="img/QQ截图20160912235654.png" /></a></span>
+    </li>
+    <li  style="margin-left:0px; position:relative;">
+         <span class="col2 " style="margin-left:-20px;"><a href="#">购物</a></span>
+        <span class="col1 " style="margin-left:70px;"><a href="#">推荐几款性价比好的冰箱</a></span>
+        <span class="col3 " style="margin-left:50px;"><a href="#"><img src="img/QQ截图20160912235635.png" /></a></span>
+    </li>
+     <li  style="margin-left:0px; position:relative;" >
+        <span class="col2 " style="margin-left:-20px;"><a href="#">购物</a></span>
+        <span class="col1 " style="margin-left:70px;"><a href="#">推荐几款性价比好的冰箱</a></span>
+        <span class="col3 " style="margin-left:50px;"><a href="#"><img src="img/QQ截图20160912235654.png" /></a></span>
+    </li>
+    <li  style="margin-left:0px; position:relative;">
+         <span class="col2 " style="margin-left:-20px;"><a href="#">购物</a></span>
+        <span class="col1 " style="margin-left:70px;"><a href="#">推荐几款性价比好的冰箱</a></span>
+        <span class="col3 " style="margin-left:50px;"><a href="#"><img src="img/QQ截图20160912235635.png" /></a></span>
+    </li>
+    </ul>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="clear">
+                    <div class="options fl">
+                    <ul class="nav clear qie">
+                        <li class="active fl">
+                        <strong style="color:#d30703;position:relative; left:50px; top:10px;">SUBWAY<a style="color:#000; padding-left:10px;">地铁</a></strong>
+                        <span class="san-down" style="position:relative; left:70px;top:20px;"></span>
+                        </li>
+                        <li class="gradient fr">
+                        <strong style="color:#d30703; position:relative; left:50px; top:10px;">MAP<a style="color:#000;padding-left:10px;">生活圈</a></strong>
+                        <span class="san-down-grey" style="position:relative; left:70px;top:20px;"></span>
+                        </li>
+                        </ul>
+                        <div class="con">
+                         <div class="tu">
+                        <ul class="tuu">
+                        <li class="connn"><img src="img/QQ截图20160914002150.png" /></li>
+                        <li class="connn"><img src="img/QQ截图20160914002320.png" /></li>
+                        </ul>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="section fr">
+                    <h2 class="main_title">
+    <strong style="color:#d30703;">BBS<span style="color:#000; padding-left:6px;">论坛</span></strong>
+    <a href="#" style=" font-size:12px; color:#CCC; height:18px; line-height:18px; display:block; float:right;">更多...<img alt="更多" src="img/QQ截图20160912194930.png" style="background-size:cover; width:20px; height:20px;" /></a>
+    </h2>
+    <ol class="bbs">
+    <li class="active">
+    <strong>01</strong>
+    <img  src="img/QQ截图20160913002239.png"/>
+    <a href="#">你没见过的古怪产品</a>
+    <span>阿瑞斯</span>
+    <em>ONE</em>
+    <b>世说新语</b>
+    </li>
+    <li>
+    <strong>02</strong>
+    <img  src="img/QQ截图20160913002239.png"/>
+    <a href="#">你没见过的古怪产品</a>
+    <span>阿瑞斯</span>
+    <em>ONE</em>
+    <b>世说新语</b>
+    </li>
+    <li>
+    <strong>03</strong>
+    <img  src="img/QQ截图20160913002239.png"/>
+    <a href="#">你没见过的古怪产品</a>
+    <span>阿瑞斯</span>
+    <em>ONE</em>
+    <b>世说新语</b>
+    </li>
+    <li>
+    <strong>04</strong>
+    <img  src="img/QQ截图20160913002239.png"/>
+    <a href="#">你没见过的古怪产品</a>
+    <span>阿瑞斯</span>
+    <em>ONE</em>
+    <b>世说新语</b>
+    </li>
+    <li>
+    <strong>05</strong>
+    <img  src="img/QQ截图20160913002239.png"/>
+    <a href="#">你没见过的古怪产品</a>
+    <span>阿瑞斯</span>
+    <em>ONE</em>
+    <b>世说新语</b>
+    </li>
+    <li>
+    <strong>06</strong>
+    <img  src="img/QQ截图20160913002239.png"/>
+    <a href="#">你没见过的古怪产品</a>
+    <span>阿瑞斯</span>
+    <em>ONE</em>
+    <b>世说新语</b>
+    </li>
+     <li>
+    <strong>07</strong>
+    <img  src="img/QQ截图20160913002239.png"/>
+    <a href="#">你没见过的古怪产品</a>
+    <span>阿瑞斯</span>
+    <em>ONE</em>
+    <b>世说新语</b>
+    </li>
+    </ol>
+                    </div>
+                    </div>
+            <div class="main-ad"><a href="#" class="addd" ></a></div>
+                     <div class="clear">
+                    <div class="section fl">
+                    <h2 class="main_title">
+    <strong style="color:#d30703;">LIFE STYLE<span style="color:#000; padding-left:6px;">知道份子</span></strong>
+    <a href="#" style=" font-size:12px; color:#CCC; height:18px; line-height:18px; display:block; float:right;">更多...<img alt="更多" src="img/QQ截图20160912194930.png" style="background-size:cover; width:20px; height:20px;" /></a>
+    </h2>
+    <div class="tab">
+    <ul >
+    <li class="active">有人在问<span class="san-down"></span></li>
+    <li class="gradient">有人知道<span class="san-down-grey"></span></li>
+    <li class="gradient">热门问题<span class="san-down-grey"></span></li>
+    </ul>
+    </div>
+      <ul class="list-section" >
+    <li class="title " style="margin-left:0px; position:relative;" >
+        <span class="col1 " style="margin-left:0px;"><a href="#">类型</a></span>
+        <span class="col2" style="margin-left:80px;"><a href="#">标题</a></span>
+        <span class="col3 " style="margin-left:230px;"><a href="#">状态</a></span>
+        </li>
+        <li  style="margin-left:0px; position:relative;">
+        <span class="col2 " style="margin-left:-20px;"><a href="#">购物</a></span>
+        <span class="col1 " style="margin-left:70px;"><a href="#">推荐几款性价比好的冰箱</a></span>
+        <span class="col3 " style="margin-left:50px;"><a href="#"><img src="img/QQ截图20160912235635.png" /></a></span>
+        </li>
+    <li  style="margin-left:0px; position:relative;" >
+        <span class="col2 " style="margin-left:-20px;"><a href="#">购物</a></span>
+        <span class="col1 " style="margin-left:70px;"><a href="#">推荐几款性价比好的冰箱</a></span>
+        <span class="col3 " style="margin-left:50px;"><a href="#"><img src="img/QQ截图20160912235654.png" /></a></span>
+    </li>
+    <li  style="margin-left:0px; position:relative;">
+         <span class="col2 " style="margin-left:-20px;"><a href="#">购物</a></span>
+        <span class="col1 " style="margin-left:70px;"><a href="#">推荐几款性价比好的冰箱</a></span>
+        <span class="col3 " style="margin-left:50px;"><a href="#"><img src="img/QQ截图20160912235635.png" /></a></span>
+    </li>
+    <li  style="margin-left:0px; position:relative;">
+         <span class="col2 " style="margin-left:-20px;"><a href="#">购物</a></span>
+        <span class="col1 " style="margin-left:70px;"><a href="#">推荐几款性价比好的冰箱</a></span>
+        <span class="col3 " style="margin-left:50px;"><a href="#"><img src="img/QQ截图20160912235654.png" /></a></span>
+    </li>
+    <li  style="margin-left:0px; position:relative;">
+         <span class="col2 " style="margin-left:-20px;"><a href="#">购物</a></span>
+        <span class="col1 " style="margin-left:70px;"><a href="#">推荐几款性价比好的冰箱</a></span>
+        <span class="col3 " style="margin-left:50px;"><a href="#"><img src="img/QQ截图20160912235635.png" /></a></span>
+    </li>
+    <li  style="margin-left:0px; position:relative;">
+         <span class="col2 " style="margin-left:-20px;"><a href="#">购物</a></span>
+        <span class="col1 " style="margin-left:70px;"><a href="#">推荐几款性价比好的冰箱</a></span>
+        <span class="col3 " style="margin-left:50px;"><a href="#"><img src="img/QQ截图20160912235654.png" /></a></span>
+    </li>
+    <li  style="margin-left:0px; position:relative;">
+         <span class="col2 " style="margin-left:-20px;"><a href="#">购物</a></span>
+        <span class="col1 " style="margin-left:70px;"><a href="#">推荐几款性价比好的冰箱</a></span>
+        <span class="col3 " style="margin-left:50px;"><a href="#"><img src="img/QQ截图20160912235635.png" /></a></span>
+    </li>
+    </ul>
+                    </div>
+                    <div class="section fr">
+                    <h2 class="main_title">
+    <strong style="color:#d30703;">HOT<span style="color:#000; padding-left:6px;">红人烧客</span></strong>
+    <a href="#" style=" font-size:12px; color:#CCC; height:18px; line-height:18px; display:block; float:right;">更多...<img alt="更多" src="img/QQ截图20160912194930.png" style="background-size:cover; width:20px; height:20px;" /></a>
+    </h2>
+    <div class="hong">
+    <ul>
+    <li><a href="#"><img src="img/QQ截图20160913202355.png" /></a></li>
+    <li><a href="#"><img src="img/QQ截图20160913202408.png" /></a></li>
+    <li><a href="#"><img src="img/QQ截图20160913202429.png" /></a></li>
+    <li><a href="#"><img src="img/QQ截图20160913202449.png" /></a></li>
+    <li><a href="#"><img src="img/QQ截图20160913202500.png" /></a></li>
+    <li><a href="#"><img src="img/QQ截图20160913202526.png"/></a></li>
+    <li><a href="#"><img src="img/QQ截图20160913202547.png" /></a></li>
+    <li><a href="#"><img src="img/QQ截图20160913202612.png"/></a></li>
+    <li><a href="#"><img src="img/QQ截图20160913202621.png" /></a></li>
+    </ul>
+    </div>
+                    </div>
+                    </div>
+                    
+                   
+            </div>
+    <div class="side fr">
+    <div class="side_section">
+    <h2 class="main_title">
+    <strong style="color:#d30703;">LOAD<span style="color:#000; padding-left:6px;">登陆</span></strong>
+    <a href="#" style=" font-size:12px; color:#CCC; height:18px; line-height:18px; display:block; float:right;">更多...<img alt="更多" src="img/QQ截图20160912194930.png" style="background-size:cover; width:20px; height:20px;" /></a>
+    </h2>
+    <form class="denglu">
+    登录名：<input type="text" /><br />
+    密码：<input type="password"  style="margin-left:12px;"/><br />
+    <input type="submit"  value="登陆" class="summit"/><em>忘记密码</em>？
+    </form>
+    </div>
+    
+    <div class="side_ad"><a href="#" class="addd" style="background-position:-65px -770px;" ></a></div>
+    <div class="side_section">
+    <h2 class="main_title">
+    <strong style="color:#d30703;">COUPUON<span style="color:#000; padding-left:6px;">抢券儿</span></strong>
+    <a href="#" style=" font-size:12px; color:#CCC; height:18px; line-height:18px; display:block; float:right;">更多...<img alt="更多" src="img/QQ截图20160912194930.png" style="background-size:cover; width:20px; height:20px;" /></a>
+    </h2>
+    <div class="tab">
+    <ul >
+    <li class="active" style="width:60px;">人气<span class="san-down"></span></li>
+    <li class="gradient" style="width:60px;">推荐<span class="san-down-grey"></span></li>
+    <li class="gradient" style="width:60px;">最新<span class="san-down-grey"></span></li>
+    </ul>
+    </div>
+    <ul class="list-section" >
+    <li class="title " style="margin-left:0px; position:relative;" >
+        <span class="col1 " style="margin-left:0px;"><a href="#">商店</a></span>
+        <span class="col2" style="margin-left:75px;"><a href="#">省</a></span>
+        <span class="col3 " style="margin-left:130px;"><a href="#">打印</a></span>
+        </li>
+        <li  style="margin-left:0px; position:relative;">
+        <span class="col1 "><a href="#">休闲老北京肥牛肉</a></span>
+        <span class="col2 "><a href="#">12%</a></span>
+        <span class="col3 "><a href="#">345</a></span>
+        </li>
+    <li  style="margin-left:0px; position:relative;" >
+        <span class="col1 "><a href="#">休闲老北京肥牛肉</a></span>
+        <span class="col2 "><a href="#">12%</a></span>
+        <span class="col3"><a href="#">345</a></span>
+    </li>
+    <li  style="margin-left:0px; position:relative;">
+        <span class="col1"><a href="#">休闲老北京肥牛肉</a></span>
+        <span class="col2"><a href="#">12%</a></span>
+        <span class="col3"><a href="#">345</a></span>
+    </li>
+    </ul>
+    </div>
+    <div class="side_section">
+    <h2 class="main_title">
+    <strong style="color:#d30703;">SHOP<span style="color:#000; padding-left:6px;">今日推荐</span></strong>
+    <a href="#" style=" font-size:12px; color:#CCC; height:18px; line-height:18px; display:block; float:right;">更多...<img alt="更多" src="img/QQ截图20160912194930.png" style="background-size:cover; width:20px; height:20px;" /></a>
+    </h2>
+    
+     <ul  class="" style="margin-top:10px; position:relative;">
+                            <li class="clear">
+                            <div class="img fl"><a href="#"><img src="img/QQ截图20160913002239.png" style="width:100px;"/></a></div>
+                            <div class="text fr" style="margin-top:10px; ">
+                            <h3><a href="#">汉娜国际美食店</a></h3>
+                            <p style=" line-height:20px; margin-top:8PX; color:#999;">
+                            区域省：朝阳/CBD<br />
+                            口味：传统中餐<br />
+                            </p>
+                            </div>
+                            </li>
+                            <img src="img/QQ截图20160913004634.png"  style="position:relative; margin-top:-40px; margin-left:70px;"/>
+                             <li class="clear">
+                            <div class="img fl"><a href="#"><img src="img/QQ截图20160913002309.png"style="width:100px;"/></a></div>
+                            <div class="text fr" style="margin-top:10px; ">
+                            <h3><a href="#">汉娜国际美食店</a></h3>
+                            <p style=" line-height:20px; margin-top:8PX; color:#999;">
+                            区域省：朝阳/CBD<br />
+                            口味：传统中餐<br />
+                            </p>
+                            </div>
+                            </li>
+                            <img src="img/QQ截图20160913004634.png"  style="position:relative; margin-top:-40px; margin-left:70px;"/>
+                             <li class="clear">
+                            <div class="img fl"><a href="#"><img src="img/QQ截图20160913002239.png"style="width:100px;"/></a></div>
+                            <div class="text fr" style="margin-top:10px; ">
+                            <h3><a href="#">汉娜国际美食店</a></h3>
+                            <p style=" line-height:20px; margin-top:8PX; color:#999;">
+                            区域省：朝阳/CBD<br />
+                            口味：传统中餐<br />
+                            </p>
+                            </div>
+                            </li>
+                            <img src="img/QQ截图20160913004634.png"  style="position:relative; margin-top:-40px; margin-left:70px;"/>
+                             <li class="clear">
+                            <div class="img fl"><a href="#"><img src="img/QQ截图20160913002309.png"style="width:100px;"/></a></div>
+                            <div class="text fr" style="margin-top:10px; ">
+                            <h3><a href="#">汉娜国际美食店</a></h3>
+                            <p style=" line-height:20px; margin-top:8PX; color:#999;">
+                            区域省：朝阳/CBD<br />
+                            口味：传统中餐<br />
+                            </p>
+                            </div>
+                            </li>
+                            <img src="img/QQ截图20160913004634.png"  style="position:relative; margin-top:-40px; margin-left:70px;"/>
+       </ul>                    
+   
+        
+    </div>
+    <div class="side_section">
+    <h2 class="main_title">
+    <strong style="color:#d30703;">SHOP<span style="color:#000; padding-left:6px;">折扣店</span></strong>
+    <a href="#" style=" font-size:12px; color:#CCC; height:18px; line-height:18px; display:block; float:right;">更多...<img alt="更多" src="img/QQ截图20160912194930.png" style="background-size:cover; width:20px; height:20px;" /></a>
+    </h2>
+    <ul  class="" style="margin-top:10px; position:relative;">
+                            <li class="clear">
+                            <div class="img fl"><a href="#"><img src="img/QQ截图20160913002239.png" style="width:100px;"/></a></div>
+                            <div class="text fr" style="margin-top:10px; ">
+                            <h3><a href="#">汉娜国际美食店</a></h3>
+                            <p style=" line-height:20px; margin-top:8PX; color:#999;">
+                            区域省：朝阳/CBD<br />
+                            口味：传统中餐<br />
+                            </p>
+                            </div>
+                            </li>
+                            <img src="img/QQ截图20160913004634.png"  style="position:relative; margin-top:-40px; margin-left:70px;"/>
+       </ul>                     
+    
+    
+     <ul class="list-section" style="margin-top:0px;">
+    <li ><a href="#"><span>休闲</span>老北京肥牛肉</a></li>
+    <li ><a href="#"><span>美食</span>随便写点什么</a></li>
+    <li ><a href="#"><span>娱乐</span>随便写点什么</a></li>
+    <li ><a href="#"><span>休闲</span>老北京肥牛肉</a></li>
+    <li ><a href="#"><span>美食</span>随便写点什么</a></li>
+    <li ><a href="#"><span>娱乐</span>随便写点什么</a></li>
+     <li ><a href="#"><span>休闲</span>老北京肥牛肉</a></li>
+    <li ><a href="#"><span>美食</span>随便写点什么</a></li>
+    </ul>
+    </div>
+    <div class="side_section">
+    <h2 class="main_title">
+    <strong style="color:#d30703;">CONPOND<span style="color:#000; padding-left:6px;">新加盟</span></strong>
+    <a href="#" style=" font-size:12px; color:#CCC; height:18px; line-height:18px; display:block; float:right;">更多...<img alt="更多" src="img/QQ截图20160912194930.png" style="background-size:cover; width:20px; height:20px;" /></a>
+    </h2>
+    <ul  class="clear" style="margin-top:10px; position:relative;">
+                            <li class="fl">
+                            <div class="img "><a href="#"><img src="img/QQ截图20160913002239.png" style="width:100px;"/></a></div>
+                            <div class="text" style="margin-top:10px; ">
+                            <h3><a href="#">汉娜国际美食店</a></h3>
+                            <p style=" line-height:20px; margin-top:8PX; color:#999;">
+                            区域省：朝阳/CBD<br />
+                            口味：传统中餐<br />
+                            </p>
+                            </div>
+                            </li>
+                            <li class="fr">
+                            <div class="img "><a href="#"><img src="img/QQ截图20160913002309.png" style="width:100px; height:87px;"/></a></div>
+                            <div class="text" style="margin-top:10px; ">
+                            <h3><a href="#">汉娜国际美食店</a></h3>
+                            <p style=" line-height:20px; margin-top:8PX; color:#999;">
+                            区域省：朝阳/CBD<br />
+                            口味：传统中餐<br />
+                            </p>
+                            </div>
+                            </li>
+    </ul>
+    <ul class="list-section">
+    <li ><a href="#"><span>休闲</span>老北京肥牛肉</a></li>
+    <li ><a href="#"><span>美食</span>随便写点什么</a></li>
+    <li ><a href="#"><span>娱乐</span>随便写点什么</a></li>
+    <li ><a href="#"><span>休闲</span>老北京肥牛肉</a></li>
+     <li ><a href="#"><span>休闲</span>老北京肥牛肉</a></li>
+    <li ><a href="#"><span>美食</span>随便写点什么</a></li>
+    </ul>
+    </div>
+    
+    </div>
+</div>
+
+
+
+<div id="footer"><p>2016-9-13 陈莹，么么哒</p></div>
+</body>
+</html>
